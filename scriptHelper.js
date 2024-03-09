@@ -22,7 +22,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         return "Empty";
     } else if (isNaN(testInput) === true) {
         return "Not a Number"
-    } else {
+    } else if (typeof testInput === "number") {
         return "Is a Number"
     }
  }
