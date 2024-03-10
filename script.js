@@ -23,9 +23,18 @@ window.addEventListener("load", function() {
 
             // alert empty input values when submitted
             if (pilotInput.value === "" || copilotInput.value === "" || fuelInput.value === "" || massInput.value === "") {
-                alert("All fields are required!");
+                alert("All fields required!");
                 event.preventDefault();
             }
+
+            // run formSubmission with correct values passed as arguments
+            formSubmission(document, 
+                document.getElementById("faultyItems"), 
+                document.querySelector("input[name=pilotName]"), 
+                document.querySelector("input[name=copilotName]"), 
+                document.querySelector("input[name=fuelLevel]"), 
+                document.querySelector("input[name=cargoMass]"));
+            
         });
 
 

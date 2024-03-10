@@ -29,7 +29,35 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    
+
+    // update element id pilotstatus to template literal with pilotInput
+    let pilotStatus = document.getElementById("pilotStatus");
+    pilotStatus.innerHTML = `Pilot ${pilot.value} Ready`;
+    // update element id copilotstatus to template literal with copilotInput
+    let copilotStatus = document.getElementById("copilotStatus");
+    copilotStatus.innerHTML = `Co-pilot ${copilot.value} Ready`;
+
+    // get elements to update
+    let launchStatus = document.getElementById("launchStatus");
+    let fuelStatus = document.getElementById("fuelStatus");
+    let cargoStatus = document.getElementById("cargoStatus");
+
+    // fuel level submitted too low
+    if (fuelLevel.value < 10000) {
+        list.style.visibility = "visible";
+        fuelStatus.innerHTML = "Not enough fuel for journey";
+        launchStatus.innerHTML = "Shuttle not ready for launch";
+        launchStatus.style.color = "red";
+    }
+
+
+    // cargo mass submitted too large
+    if (cargoLevel.value > 10000) {
+        list.style.visibility = "visible";
+        cargoStatus.innerHTML = "Too much mass for takeoff";
+        launchStatus.innerHTML = "Shuttle not ready for launch";
+        launchStatus.style.color = "red";
+    }
  }
  
  async function myFetch() {
