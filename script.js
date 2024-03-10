@@ -30,8 +30,8 @@ window.addEventListener("load", function() {
             // run formSubmission with correct values passed as arguments
             formSubmission(document, 
                 document.getElementById("faultyItems"), 
-                document.querySelector("input[name=pilotName]"), 
-                document.querySelector("input[name=copilotName]"), 
+                pilotInput.value, 
+                copilotInput.value, 
                 document.querySelector("input[name=fuelLevel]"), 
                 document.querySelector("input[name=cargoMass]"));
             

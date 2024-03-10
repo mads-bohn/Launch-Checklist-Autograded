@@ -30,33 +30,34 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
-    // update element id pilotstatus to template literal with pilotInput
-    let pilotStatus = document.getElementById("pilotStatus");
-    pilotStatus.innerHTML = `Pilot ${pilot.value} Ready`;
-    // update element id copilotstatus to template literal with copilotInput
-    let copilotStatus = document.getElementById("copilotStatus");
-    copilotStatus.innerHTML = `Co-pilot ${copilot.value} Ready`;
-
     // get elements to update
     let launchStatus = document.getElementById("launchStatus");
     let fuelStatus = document.getElementById("fuelStatus");
     let cargoStatus = document.getElementById("cargoStatus");
+    let pilotStatus = document.getElementById("pilotStatus");
+    let copilotStatus = document.getElementById("copilotStatus");
+
+    // set list to be ready for launch
+    list.style.visibility = "visible";
+    launchStatus.innerHTML = "Shuttle is Ready for Launch";
+    launchStatus.style.color = "green";
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+    fuelStatus.innerHTML = "Fuel level high enough for launch";
+    cargoStatus.innerHTML = "Cargo mass low enough for launch";
 
     // fuel level submitted too low
-    if (fuelLevel.value < 10000) {
-        list.style.visibility = "visible";
-        fuelStatus.innerHTML = "Not enough fuel for journey";
-        launchStatus.innerHTML = "Shuttle not ready for launch";
-        launchStatus.style.color = "red";
+    if (fuelLevel < 10000) {
+        fuelStatus.innerHTML = "Fuel level too low for launch";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        launchStatus.style.color = 'red';
     }
 
-
     // cargo mass submitted too large
-    if (cargoLevel.value > 10000) {
-        list.style.visibility = "visible";
-        cargoStatus.innerHTML = "Too much mass for takeoff";
-        launchStatus.innerHTML = "Shuttle not ready for launch";
-        launchStatus.style.color = "red";
+    if (cargoLevel > 10000) {
+        cargoStatus.innerHTML = "Cargo mass too heavy for launch";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+        launchStatus.style.color = 'red';
     }
  }
  
