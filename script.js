@@ -1,5 +1,6 @@
 // Write your JavaScript code here!
 
+
 window.addEventListener("load", function() {
 
     let listedPlanets;
@@ -33,7 +34,18 @@ window.addEventListener("load", function() {
             // alert empty input values when submitted
             if (pilotInput.value === "" || copilotInput.value === "" || fuelInput.value === "" || massInput.value === "") {
                 alert("All fields required!");
-                // event.preventDefault();
+                return;
+            }
+
+            // alert if pilot names are numbers
+            if (validateInput(pilotInput.value) === "Is a Number" || validateInput(pilotInput.value) === "Is a Number") {
+                alert("Pilot names cannot be numbers");
+                return;
+            }
+
+            // alert if fuel or mass are strings
+            if (validateInput(fuelInput.value) === "Not a Number" || validateInput(massInput.value) === "Not a Number") {
+                alert("Fuel level and cargo mass must be numbers");
                 return;
             }
 
